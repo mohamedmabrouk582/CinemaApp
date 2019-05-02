@@ -28,7 +28,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.cinemaapp.R
 import com.cinemaapp.data.models.*
 import com.cinemaapp.ui.adapters.MovieTrailerAdapter
-import com.smarteist.autoimageslider.*
+import com.mabrouk.slideroval.DefaultSliderView
+import com.mabrouk.slideroval.IndicatorAnimations
+import com.mabrouk.slideroval.ScrollTimeType
+import com.mabrouk.slideroval.SliderAnimations
+import kotlinx.android.synthetic.main.movie_details_layout.view.*
 
 
 /*
@@ -85,9 +89,9 @@ class MovieDetailsFragment : BaseFragment() , MovieDetailsCallBack, MovieAdapter
     override fun initView() {
         viewModel=getViewModel(activity!!,factory)
         viewModel.attachView(this)
-        layoutBinding.imageSlider.setIndicatorAnimation(IndicatorAnimations.THIN_WORM)
-        layoutBinding.imageSlider.setSliderTransformAnimation(SliderAnimations.FIDGETSPINTRANSFORMATION)
-        layoutBinding.imageSlider.scrollTimeInSec=1
+        layoutBinding.imageSliders.setIndicatorAnimation(IndicatorAnimations.THIN_WORM)
+        layoutBinding.imageSliders.setSliderTransformAnimation(SliderAnimations.FIDGETSPINTRANSFORMATION)
+        layoutBinding.imageSliders.setScrollTimeInSec(1,ScrollTimeType.SECOND)
         setUoAdapters()
         viewModel.reqMovieDetails(activity?.intent?.getLongExtra(Constans.MOVIEID,0)!!)
         layoutBinding.movieDetails= viewModel
@@ -104,7 +108,7 @@ class MovieDetailsFragment : BaseFragment() , MovieDetailsCallBack, MovieAdapter
         images.forEach {
             val sliderView = DefaultSliderView(context)
             sliderView.imageUrl = it.poster_path1
-            layoutBinding.imageSlider.addSliderView(sliderView)
+            layoutBinding.imageSliders.addSliderView(sliderView)
         }
     }
 

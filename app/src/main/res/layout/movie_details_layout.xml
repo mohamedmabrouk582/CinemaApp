@@ -37,11 +37,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                <com.smarteist.autoimageslider.SliderLayout
+                <com.mabrouk.slideroval.SliderLayout
+                        app:indicator_radius="3dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_alignParentTop="true"
-                        android:id="@+id/imageSlider"
+                        android:id="@+id/imageSliders"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"

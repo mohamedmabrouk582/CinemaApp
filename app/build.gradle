@@ -74,7 +74,6 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.0.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.0.0'
     implementation 'com.github.vivchar:ViewPagerIndicator:1.1.0'
-    implementation 'com.github.smarteist:autoimageslider:1.2.0'
     implementation 'com.facebook.shimmer:shimmer:0.4.0@aar'
     implementation 'com.github.mohamedmabrouk582:SliderCircle:0.0.1'
 
