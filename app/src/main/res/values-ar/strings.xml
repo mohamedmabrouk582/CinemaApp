@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="movies">Movies</string>
+    <string name="tv_shows">Tv Shows</string>
+    <string name="search">Search</string>
+    <string name="original_language">Original Language :</string>
+    <string name="overview">OverView</string>
+    <string name="movie_trailers">Movie Trailers</string>
+    <string name="movie_cast">Movie Cast</string>
+    <string name="recommend_movies">Recommend Movies</string>
+    <string name="similar_movies">Similar Movies</string>
+    <string name="movie_details">Movie Details</string>
+    <string name="release_date">Release Date :</string>
+    <string name="budget">Budget :</string>
+    <string name="revenue">Revenue :</string>
+    <string name="status">Status :</string>
+    <string name="tagline">TagLine :</string>
+    <string name="producation_countries">Producation Countries :</string>
+    <string name="production_companies">Production Companies</string>
+    <string name="movie_links">Movie Links</string>
+    <string name="up_coming">Up Coming</string>
+    <string name="top_rated">Top Rated</string>
+    <string name="popular">Popular</string>
+    <string name="playing_now">Playing Now</string>
+    <string name="on_the_air">On The Air</string>
+    <string name="airing_today">Airing Today</string>
+    <string name="character_hint">character :</string>
+    <string name="name_hint">Name :</string>
+</resources>
