@@ -18,4 +18,5 @@ interface MovieDetailsCallBack : BaseCallBack {
     fun loadVideos(videos:ArrayList<MovieTrailer>)
     fun loadMovieCast(casts:ArrayList<MovieCast>)
     fun loadCompany(company:ArrayList<ProductionCompanies>)
+    fun movieTitle(title:String)
 }

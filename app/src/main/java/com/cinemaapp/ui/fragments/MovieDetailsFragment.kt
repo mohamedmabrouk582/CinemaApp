@@ -1,5 +1,6 @@
 package com.cinemaapp.ui.fragments
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -24,6 +25,7 @@ import com.cinemaapp.viewModels.base.BaseViewModelFactory
 import javax.inject.Inject
 import android.widget.ImageView
 import android.widget.LinearLayout
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cinemaapp.R
 import com.cinemaapp.data.models.*
@@ -41,6 +43,13 @@ import kotlinx.android.synthetic.main.movie_details_layout.view.*
 */
 
 class MovieDetailsFragment : BaseFragment() , MovieDetailsCallBack, MovieAdapter.MovieListener {
+
+    override fun movieTitle(title: String) {
+//        activity.setSupportActionBar(mActionBarToolbar);
+//        getSupportActionBar().setTitle("My title");
+        activity?.actionBar?.title=title
+
+    }
 
     @Inject
     lateinit var factory: BaseViewModelFactory
@@ -66,10 +75,16 @@ class MovieDetailsFragment : BaseFragment() , MovieDetailsCallBack, MovieAdapter
     val movieTrailersAdapter:MovieTrailerAdapter by lazy {
         MovieTrailerAdapter(object : MovieTrailerAdapter.TrailerListener{
             override fun onTrailerClick(item: MovieTrailer) {
-
+             viewModel.watchYoutubeVideo(context!!,item.trailer_key?:"")
             }
-
         })
+    }
+
+    fun clearAllAdapters(){
+      producationCompanyAdapter.data.let { it.clear() }
+      movieTrailersAdapter.data.let { it.clear() }
+      movieCastAdapter.data.let { it.clear() }
+      layoutBinding.imageSliders.clearSliderViews()
     }
 
 
@@ -153,8 +168,11 @@ class MovieDetailsFragment : BaseFragment() , MovieDetailsCallBack, MovieAdapter
 
 
     override fun onClickMovie(item: Movie) {
-
+        clearAllAdapters()
+        viewModel.reqMovieDetails(item.id)
     }
+
+
 
 
 }

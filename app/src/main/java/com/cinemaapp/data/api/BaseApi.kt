@@ -4,6 +4,7 @@ import com.cinemaapp.data.enums.MovieRelatedType
 import com.cinemaapp.data.enums.MovieType
 import com.cinemaapp.data.enums.TvShowType
 import com.cinemaapp.data.models.Movie
+import com.cinemaapp.data.models.TvShow
 import com.cinemaapp.data.models.response.*
 import io.reactivex.Observable
 import kotlinx.coroutines.Deferred
@@ -39,7 +40,19 @@ interface BaseApi {
     @GET("movie/{movie_id}/credits?api_key=c258ef3167d2f4ec83da643c7f76b785")
     fun getMovieCast(@Path("movie_id") movie_id:Long) :Observable<MovieCastResponse>
 
-    @GET("movie/{movie_id}/credits?api_key=c258ef3167d2f4ec83da643c7f76b785")
-    fun getMovieCasts(@Path("movie_id") movie_id:Long) :Deferred<MovieCastResponse>
+    @GET("tv/{tv_id}/images?api_key=c258ef3167d2f4ec83da643c7f76b785")
+    fun getTVImages(@Path("tv_id") tv_id:Long) : Observable<MovieImagesResponse>
+
+    @GET("tv/{tv_id}/{type}?api_key=c258ef3167d2f4ec83da643c7f76b785")
+    fun getRelatedTv(@Path("tv_id") tv_id:Long,@Path("type") type:MovieRelatedType,@Query("page") page:Int) :Observable<TvShowResponse>
+
+    @GET("tv/{tv_id}/videos?api_key=c258ef3167d2f4ec83da643c7f76b785")
+    fun getTvTrailers(@Path("tv_id") tv_id:Long) : Observable<MovieTrailersResponse>
+
+    @GET("tv/{tv_id}/credits?api_key=c258ef3167d2f4ec83da643c7f76b785")
+    fun getTvCast(@Path("tv_id") tv_id:Long) :Observable<MovieCastResponse>
+
+    @GET("tv/{tv_id}?api_key=c258ef3167d2f4ec83da643c7f76b785")
+    fun getTvDetails(@Path("tv_id") tv_id:Long) : Observable<TvShow>
 
 }

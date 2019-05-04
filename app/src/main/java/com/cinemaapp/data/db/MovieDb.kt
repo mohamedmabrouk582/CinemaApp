@@ -12,7 +12,7 @@ import com.cinemaapp.data.models.TvShow
 * Created By mabrouk on 20/03/19
 * KotilnApp
 */
-@Database(entities = arrayOf(Movie::class,TvShow::class), version = 10, exportSchema = false)
+@Database(entities = arrayOf(Movie::class,TvShow::class), version = 11, exportSchema = false)
 @TypeConverters(MovieTypeConvert::class)
 abstract class MovieDb : RoomDatabase() {
      abstract fun getMovieDao(): MovieDao

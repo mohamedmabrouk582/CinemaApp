@@ -92,7 +92,7 @@ class MovieListViewModel<v : MovieCallBack>(val app:Application,val api:BaseApi,
         val config=PagedList.Config.Builder()
             .setEnablePlaceholders(true)
             .setPageSize(MovieDataSource.PAGE_SIZE).build()
-        analysisData(type,LivePagedListBuilder(factory,config).build())
+        analysisData(type,LivePagedListBuilder(factory,config).setBoundaryCallback(callBack).build())
     }
 
     fun showLocalData(factory:DataSource.Factory<Int,Movie>,type: MovieType){
@@ -111,10 +111,23 @@ class MovieListViewModel<v : MovieCallBack>(val app:Application,val api:BaseApi,
                 MovieType.upcoming-> view.loadUpComing(it)
             }
         })
+    }
 
-       GlobalScope.async(Dispatchers.IO) {
-           api.getMovieCasts(240)
-       }
+    val callBack=object : PagedList.BoundaryCallback<Movie>(){
+        override fun onZeroItemsLoaded() {
+            super.onZeroItemsLoaded()
+            Log.d("BoundaryCallback","onZeroItemsLoaded")
+        }
+
+        override fun onItemAtEndLoaded(itemAtEnd: Movie) {
+            super.onItemAtEndLoaded(itemAtEnd)
+            Log.d("BoundaryCallback","onItemAtEndLoaded : $itemAtEnd")
+        }
+
+        override fun onItemAtFrontLoaded(itemAtFront: Movie) {
+            super.onItemAtFrontLoaded(itemAtFront)
+            Log.d("BoundaryCallback","onItemAtFrontLoaded : $itemAtFront")
+        }
     }
 
 

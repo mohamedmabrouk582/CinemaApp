@@ -9,5 +9,5 @@ import com.google.gson.annotations.SerializedName
 * CinemaApp
 */
 
-data class BelongsCollection(@SerializedName("id")val belongsId:Long, @SerializedName("Name")val belongsName:String,
+data class BelongsCollection(@SerializedName("id")val belongsId:Long, @SerializedName("Name")val belongsName:String?,
                              @SerializedName("poster_path")val  belongsPoster: String?) : BaseObservable()

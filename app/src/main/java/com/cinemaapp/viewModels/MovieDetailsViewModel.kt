@@ -1,6 +1,10 @@
 package com.cinemaapp.viewModels
 
 import android.app.Application
+import android.content.ActivityNotFoundException
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableBoolean
@@ -60,6 +64,7 @@ class MovieDetailsViewModel<v : MovieDetailsCallBack>(
     val mainLoader:ObservableBoolean = ObservableBoolean()
     val mainError:ObservableField<String> = ObservableField()
     val movieObser:ObservableField<Movie> = ObservableField()
+    val movieTitle:ObservableField<String> = ObservableField();
 
 
     init {
@@ -84,7 +89,8 @@ class MovieDetailsViewModel<v : MovieDetailsCallBack>(
 
      @ExperimentalCoroutinesApi
      fun reqMovieDetails(movieId: Long){
-        this.movieId=movieId
+      this.movieId=movieId
+       movieObser.set(null)
      mainLoader.set(true)
      mainError.set(null)
         setUpLists()
@@ -95,6 +101,8 @@ class MovieDetailsViewModel<v : MovieDetailsCallBack>(
                 override fun onResponse(data: MutableLiveData<Movie>) {
                     mainLoader.set(false)
                     movie=data.value!!
+                    view.movieTitle(data.value?.original_title?:"")
+                    movieTitle.set(data.value?.original_title)
                     movieObser.set(movie)
                     if (movie.production_companies?.size!!>0)
                         view.loadCompany(movie.production_companies!!)
@@ -108,7 +116,7 @@ class MovieDetailsViewModel<v : MovieDetailsCallBack>(
                 }
 
                 override fun onError(msg: String) {
-                   mainLoader.set(false)
+                    mainLoader.set(false)
                     mainError.set(msg)
                 }
 
@@ -305,6 +313,7 @@ class MovieDetailsViewModel<v : MovieDetailsCallBack>(
 
          errors[2] = view.getMovieDetailsFragment().getString(R.string.no_internet_connection)
          errors[3] = view.getMovieDetailsFragment().getString(R.string.no_internet_connection)
+         movieObser.set(movie)
      }
 
     private fun updateMovie(){
@@ -312,6 +321,20 @@ class MovieDetailsViewModel<v : MovieDetailsCallBack>(
             launch (Dispatchers.IO){
                 movieDao.updateMovie(movie)
             }
+        }
+    }
+
+     fun close(){
+        view.getMovieDetailsFragment().activity?.finish()
+    }
+
+    fun watchYoutubeVideo(context:Context,id:String){
+        val appIntent = Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:$id"))
+        val webIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/watch?v=$id"))
+        try {
+            context.startActivity(appIntent)
+        } catch (ex: ActivityNotFoundException) {
+            context.startActivity(webIntent)
         }
     }
 

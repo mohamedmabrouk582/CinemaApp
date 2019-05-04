@@ -36,6 +36,13 @@ interface MovieDao {
     @Query("select * from Movie where id =:id")
     fun getMovie(id:Long) : LiveData<Movie>
 
+    @Query("select * from TvShow where id=:id")
+    fun getTvShow(id:Long) : LiveData<TvShow>
+
     @Update(onConflict = REPLACE)
     fun updateMovie(movie: Movie) : Int
+
+    @Update(onConflict = REPLACE)
+    fun updateTvShow(tvShow: TvShow) :Int
+
 }
