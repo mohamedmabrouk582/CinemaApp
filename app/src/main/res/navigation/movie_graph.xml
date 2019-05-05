@@ -4,5 +4,12 @@
             android:id="@+id/movie_graph" app:startDestination="@id/movieDetailsFragment">
 
     <fragment android:id="@+id/movieDetailsFragment" android:name="com.cinemaapp.ui.fragments.MovieDetailsFragment"
-              android:label="MovieDetailsFragment"/>
+              android:label="MovieDetailsFragment">
+        <action android:id="@+id/action_movieDetailsFragment_to_tvShowDetailsFragment"
+                app:destination="@id/tvShowDetailsFragment"/>
+    </fragment>
+    <fragment android:id="@+id/tvShowDetailsFragment" android:name="com.cinemaapp.ui.fragments.TvShowDetailsFragment"
+              android:label="TvShowDetailsFragment">
+        <argument android:name="tv_id" app:argType="long"/>
+    </fragment>
 </navigation>

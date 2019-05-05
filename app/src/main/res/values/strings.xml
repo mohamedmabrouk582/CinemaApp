@@ -34,8 +34,14 @@
     <string name="character_hint">character :</string>
     <string name="name_hint">Name :</string>
     <string name="tv_trailers">Tv Trailers</string>
-    <string name="first_air_date">First Air Date</string>
-    <string name="last_air_date">Last Air Date</string>
-    <string name="number_of_episodes">Number Of Episodes</string>
-    <string name="number_of_seasons">Number Of Seasons</string>
+    <string name="first_air_date">First Air Date : </string>
+    <string name="last_air_date">Last Air Date : </string>
+    <string name="number_of_episodes">Number Of Episodes : </string>
+    <string name="number_of_seasons">Number Of Seasons : </string>
+    <string name="season_hint">Season :</string>
+    <string name="episodes_hint">Episodes :</string>
+    <string name="episode_num">Episode Num :</string>
+    <string name="air_date">Air Date :</string>
+    <string name="season_num">Season Num :</string>
+    <string name="overview_hint">OverView :</string>
 </resources>

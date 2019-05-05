@@ -99,15 +99,6 @@ class MovieTypeConvert {
     }
 
     @TypeConverter
-    fun convertFromTvEpisode(data:ArrayList<TvEpisode>?) : String? =Gson().toJson(data)
-
-    @TypeConverter
-    fun convertToTvEpisode(data: String?) :ArrayList<TvEpisode>?{
-        val type=object : TypeToken<ArrayList<TvEpisode>>(){}.type
-        return Gson().fromJson(data,type)
-    }
-
-    @TypeConverter
     fun convertFromTvNetWorks(data:ArrayList<TvNetWorks>?) : String? = Gson().toJson(data)
 
     @TypeConverter

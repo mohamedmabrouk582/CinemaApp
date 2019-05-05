@@ -15,10 +15,12 @@ import com.cinemaapp.R
 import com.cinemaapp.app.MyApp
 import com.cinemaapp.callBacks.MovieCallBack
 import com.cinemaapp.callBacks.TvShowCallBack
+import com.cinemaapp.data.enums.DetailsType
 import com.cinemaapp.data.enums.TvShowType
 import com.cinemaapp.data.models.TvShow
 import com.cinemaapp.databinding.TvShowListLayoutBinding
 import com.cinemaapp.di.components.DaggerTvShowListComponent
+import com.cinemaapp.ui.activities.MovieDetailsActivity
 import com.cinemaapp.ui.adapters.TvShowListAdapter
 import com.cinemaapp.ui.base.BaseFragment
 import com.cinemaapp.viewModels.TvShowListViewModel
@@ -109,7 +111,7 @@ class TvShowListFragment : BaseFragment() , TvShowCallBack , TvShowListAdapter.T
     }
 
     override fun onTvShowClick(item: TvShow) {
-        Toast.makeText(context,item.toString(),Toast.LENGTH_SHORT).show()
+        MovieDetailsActivity.start(context!!,item.id,DetailsType.TV)
     }
 
     private inline fun <reified T : BaseViewModel<TvShowCallBack>> getViewModel(activity: FragmentActivity, factory: BaseViewModelFactory): T {

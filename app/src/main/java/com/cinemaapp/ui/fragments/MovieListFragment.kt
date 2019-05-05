@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.cinemaapp.R
 import com.cinemaapp.app.MyApp
 import com.cinemaapp.callBacks.MovieCallBack
+import com.cinemaapp.data.enums.DetailsType
 import com.cinemaapp.data.enums.MovieType
 import com.cinemaapp.data.models.Movie
 import com.cinemaapp.databinding.MovieListFramentLayoutBinding
@@ -107,7 +108,7 @@ class MovieListFragment : BaseFragment() , MovieCallBack , MovieAdapter.MovieLis
     }
 
     override fun onClickMovie(item: Movie) {
-        MovieDetailsActivity.start(context!!,item.id)
+        MovieDetailsActivity.start(context!!,item.id,DetailsType.MOVIE)
     }
 
     private inline fun <reified T : BaseViewModel<MovieCallBack>> getViewModel(activity: FragmentActivity, factory: BaseViewModelFactory): T {

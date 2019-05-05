@@ -19,8 +19,6 @@ interface TvDetailsCallBack : BaseCallBack {
     fun loadSeasons(data:ArrayList<TvShowSeason>)
     fun loadCreatedBy(data: ArrayList<TvShowCreated>)
     fun loadTvNetworks(data:ArrayList<TvNetWorks>)
-    fun loadLastEpisodeAir(data:ArrayList<TvEpisode>)
-    fun loadNextEpisodeAir(data:ArrayList<TvEpisode>)
     fun producationCompany(data: ArrayList<ProductionCompanies>)
     fun loadTvCast(data:ArrayList<MovieCast>)
 }

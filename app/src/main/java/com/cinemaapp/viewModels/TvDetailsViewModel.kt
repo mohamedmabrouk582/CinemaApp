@@ -1,6 +1,10 @@
 package com.cinemaapp.viewModels
 
 import android.app.Application
+import android.content.ActivityNotFoundException
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
@@ -68,6 +72,7 @@ class TvDetailsViewModel<v : TvDetailsCallBack>( application: Application,val ap
         errors.add(6,null)//cast
         errors.add(7,null)//recommend
         errors.add(8,null)//similar
+        errors.add(9,null)//producation company
     }
 
     fun reqTvShowDetails(tv_id:Long){
@@ -127,17 +132,17 @@ class TvDetailsViewModel<v : TvDetailsCallBack>( application: Application,val ap
             view.loadCreatedBy(tvShow.created_by!!)
         } else errors[2]=view.getDetailsFragment().getString(R.string.no_data_found)
 
-        if (tvShow.last_episode_to_air?.size!=0)
-            view.loadLastEpisodeAir(tvShow.last_episode_to_air!!)
-        else errors[3]=view.getDetailsFragment().getString(R.string.no_data_found)
+        if (tvShow.last_episode_to_air ==null) errors[3]=view.getDetailsFragment().getString(R.string.no_data_found)
 
-        if (tvShow.next_episode_to_air?.size!=0)
-            view.loadNextEpisodeAir(tvShow.next_episode_to_air!!)
-        else errors[4]=view.getDetailsFragment().getString(R.string.no_data_found)
+        if (tvShow.next_episode_to_air == null) errors[4]=view.getDetailsFragment().getString(R.string.no_data_found)
 
         if (tvShow.networks?.size!=0)
             view.loadTvNetworks(tvShow.networks!!)
         else errors[5]=view.getDetailsFragment().getString(R.string.no_data_found)
+
+        if (tvShow.production_companies?.size!=0)
+            view.producationCompany(tvShow.production_companies!!)
+        else errors[9]=view.getDetailsFragment().getString(R.string.no_data_found)
     }
 
     fun reqImages(){
@@ -291,6 +296,16 @@ class TvDetailsViewModel<v : TvDetailsCallBack>( application: Application,val ap
 
     fun close(){
         view.getDetailsFragment().activity?.onBackPressed()
+    }
+
+    fun watchYoutubeVideo(context: Context, id:String){
+        val appIntent = Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:$id"))
+        val webIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/watch?v=$id"))
+        try {
+            context.startActivity(appIntent)
+        } catch (ex: ActivityNotFoundException) {
+            context.startActivity(webIntent)
+        }
     }
 
 
