@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProviders
@@ -18,6 +19,7 @@ import com.cinemaapp.data.models.*
 import com.cinemaapp.databinding.MovieTrailerItemViewBinding
 import com.cinemaapp.databinding.TvShowDetailsLayoutBinding
 import com.cinemaapp.di.components.DaggerTvShowComponent
+import com.cinemaapp.ui.activities.MovieDetailsActivity
 import com.cinemaapp.ui.adapters.*
 import com.cinemaapp.ui.base.BaseFragment
 import com.cinemaapp.utils.Constans
@@ -28,6 +30,7 @@ import com.mabrouk.slideroval.DefaultSliderView
 import com.mabrouk.slideroval.IndicatorAnimations
 import com.mabrouk.slideroval.ScrollTimeType
 import com.mabrouk.slideroval.SliderAnimations
+import kotlinx.android.synthetic.main.movie_details_layout.*
 import javax.inject.Inject
 
 
@@ -38,6 +41,10 @@ import javax.inject.Inject
 
 class TvShowDetailsFragment : BaseFragment() , TvDetailsCallBack,
     TvShowListAdapter.TvShowListener {
+    override fun setTitle(title: String) {
+        layoutBinding.collapsingToolbar.title=title
+        layoutBinding.toolbar.title=title
+    }
 
 
     @Inject
@@ -108,6 +115,8 @@ class TvShowDetailsFragment : BaseFragment() , TvDetailsCallBack,
      viewModel.reqTvShowDetails(arguments?.getLong(Constans.TV_ID)?:0)
      layoutBinding.tvDetails=viewModel
     }
+
+
 
     fun setUpAdapter(){
         layoutBinding.imageSliders.setScrollTimeInSec(1,ScrollTimeType.SECOND)
@@ -195,7 +204,8 @@ class TvShowDetailsFragment : BaseFragment() , TvDetailsCallBack,
     }
 
     override fun onTvShowClick(item: TvShow) {
-
+      layoutBinding.imageSliders.clearSliderViews()
+      viewModel.reqTvShowDetails(item.id)
     }
 
 }

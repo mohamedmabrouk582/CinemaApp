@@ -7,5 +7,5 @@ package com.cinemaapp.data.enums
 */
 
 enum class MediaType {
-    movie,all,tv
+    movie,tv
 }

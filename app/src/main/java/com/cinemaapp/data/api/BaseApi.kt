@@ -55,4 +55,10 @@ interface BaseApi {
     @GET("tv/{tv_id}?api_key=c258ef3167d2f4ec83da643c7f76b785")
     fun getTvDetails(@Path("tv_id") tv_id:Long) : Observable<TvShow>
 
+    @GET("search/multi?api_key=c258ef3167d2f4ec83da643c7f76b785")
+    fun getSearch(@Query("query") query:String,@Query("page") page:Int) : Observable<SearchResultResponse>
+
+    @GET("search/keyword?api_key=c258ef3167d2f4ec83da643c7f76b785")
+    fun getKeyWords(@Query("query") query:String,@Query("page") page:Int) : Observable<KeyWordResponse>
+
 }

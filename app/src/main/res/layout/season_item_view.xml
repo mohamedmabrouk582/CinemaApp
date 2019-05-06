@@ -38,6 +38,7 @@
                     app:layout_constraintEnd_toStartOf="@+id/imageView2"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView2">
                 <TextView
+                        android:gravity="center"
                         android:paddingStart="5dp"
                         android:paddingEnd="5dp"
                         android:lines="1"

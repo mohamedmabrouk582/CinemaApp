@@ -26,9 +26,11 @@ import javax.inject.Inject
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cinemaapp.R
 import com.cinemaapp.data.models.*
+import com.cinemaapp.ui.activities.MovieDetailsActivity
 import com.cinemaapp.ui.adapters.MovieTrailerAdapter
 import com.mabrouk.slideroval.DefaultSliderView
 import com.mabrouk.slideroval.IndicatorAnimations
@@ -45,10 +47,8 @@ import kotlinx.android.synthetic.main.movie_details_layout.view.*
 class MovieDetailsFragment : BaseFragment() , MovieDetailsCallBack, MovieAdapter.MovieListener {
 
     override fun movieTitle(title: String) {
-//        activity.setSupportActionBar(mActionBarToolbar);
-//        getSupportActionBar().setTitle("My title");
-        activity?.actionBar?.title=title
-
+        layoutBinding.collapsingToolbar.title=title
+        layoutBinding.toolbar.title=title
     }
 
     @Inject

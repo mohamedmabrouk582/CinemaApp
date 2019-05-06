@@ -1,5 +1,6 @@
 package com.cinemaapp.callBacks
 
+import androidx.appcompat.widget.DialogTitle
 import androidx.paging.PagedList
 import com.cinemaapp.data.models.*
 import com.cinemaapp.ui.fragments.TvShowDetailsFragment
@@ -21,4 +22,5 @@ interface TvDetailsCallBack : BaseCallBack {
     fun loadTvNetworks(data:ArrayList<TvNetWorks>)
     fun producationCompany(data: ArrayList<ProductionCompanies>)
     fun loadTvCast(data:ArrayList<MovieCast>)
+    fun setTitle(title: String)
 }

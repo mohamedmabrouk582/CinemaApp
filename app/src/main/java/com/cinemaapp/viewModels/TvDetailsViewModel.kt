@@ -50,6 +50,7 @@ class TvDetailsViewModel<v : TvDetailsCallBack>( application: Application,val ap
     val mainLoader: ObservableBoolean = ObservableBoolean()
     val mainError: ObservableField<String> = ObservableField()
     val tvShowData:ObservableField<TvShow> = ObservableField()
+    var isLoadMore:Boolean = false
     var tv_id: Long=0
     lateinit var tvShow:TvShow
 
@@ -89,6 +90,7 @@ class TvDetailsViewModel<v : TvDetailsCallBack>( application: Application,val ap
                         mainLoader.set(false)
                         tvShow=data.value!!
                         tvShowData.set(tvShow)
+                        view.setTitle(tvShow.original_name)
                         loadTvShow()
                         MovieRelatedType.values().forEach {
                             reqTvShow(it)
@@ -255,19 +257,23 @@ class TvDetailsViewModel<v : TvDetailsCallBack>( application: Application,val ap
         val dataSource= TvRelatedShowsDataSource(getApplication(),tv_id,type,api,object : RequestListener<TvShowResponse>{
             override fun onResponse(data: MutableLiveData<TvShowResponse>) {
                 loaders[type.ordinal+2]=false
+                isLoadMore=true
             }
 
             override fun onError(msg: String) {
+                if (isLoadMore)return
                 loaders[type.ordinal+2]=false
                 errors[type.ordinal+7]=msg
             }
 
             override fun onSessionExpired(msg: String) {
+                if (isLoadMore)return
                 loaders[type.ordinal+2]=false
                 errors[type.ordinal+7]=msg
             }
 
             override fun onNetWorkError(msg: String) {
+                if (isLoadMore)return
                 loaders[type.ordinal+2]=false
                 errors[type.ordinal+7]=msg
             }
@@ -303,7 +309,7 @@ class TvDetailsViewModel<v : TvDetailsCallBack>( application: Application,val ap
         val webIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/watch?v=$id"))
         try {
             context.startActivity(appIntent)
-        } catch (ex: ActivityNotFoundException) {
+        } catch (ex: Exception) {
             context.startActivity(webIntent)
         }
     }

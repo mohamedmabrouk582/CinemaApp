@@ -64,7 +64,6 @@ class MovieDetailsViewModel<v : MovieDetailsCallBack>(
     val mainLoader:ObservableBoolean = ObservableBoolean()
     val mainError:ObservableField<String> = ObservableField()
     val movieObser:ObservableField<Movie> = ObservableField()
-    val movieTitle:ObservableField<String> = ObservableField();
 
 
     init {
@@ -102,7 +101,6 @@ class MovieDetailsViewModel<v : MovieDetailsCallBack>(
                     mainLoader.set(false)
                     movie=data.value!!
                     view.movieTitle(data.value?.original_title?:"")
-                    movieTitle.set(data.value?.original_title)
                     movieObser.set(movie)
                     if (movie.production_companies?.size!!>0)
                         view.loadCompany(movie.production_companies!!)

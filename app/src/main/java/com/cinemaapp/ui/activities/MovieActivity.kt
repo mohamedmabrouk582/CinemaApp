@@ -36,7 +36,8 @@ class MovieActivity : BaseActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        return super.onOptionsItemSelected(item)
+        SearchActivity.start(this)
+        return true
     }
 
     @SuppressLint("ClickableViewAccessibility")
