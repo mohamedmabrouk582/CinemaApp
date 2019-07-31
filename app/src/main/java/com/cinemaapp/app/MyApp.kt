@@ -9,6 +9,7 @@ import com.cinemaapp.di.modules.ApiModule
 import com.cinemaapp.di.modules.AppModule
 import com.cinemaapp.di.modules.ExecutorsModule
 import com.cinemaapp.di.modules.RoomModule
+import com.google.firebase.analytics.FirebaseAnalytics
 
 
 /*
@@ -20,6 +21,7 @@ class MyApp : Application() {
     lateinit var appComponent: AppComponent
     override fun onCreate() {
         super.onCreate()
+        FirebaseAnalytics.getInstance(this)
         appComponent = DaggerAppComponent.builder()
             .apiModule(ApiModule("https://api.themoviedb.org/3/"))
             .appModule(AppModule(this))
