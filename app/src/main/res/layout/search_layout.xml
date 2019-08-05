@@ -18,38 +18,54 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <ProgressBar
-            android:visibility="@{searchVm.loader?View.VISIBLE:View.GONE}"
-            style="?android:attr/progressBarStyle"
+    <com.mabrouk.loaderlib.LoaderView
+            android:id="@+id/textView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/progressBar4"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:loaderColor="@color/white"
+            app:loaderType="WanderingCubes"
+            app:showLoader="@{searchVm.loader}"
+            app:showError="@{searchVm.error!=null}"
+            app:errorMsg="@{searchVm.error}"
+            app:callBack="@{searchVm.callBack}"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+    />
+
+    <!--<ProgressBar-->
+            <!--android:visibility="@{searchVm.loader?View.VISIBLE:View.GONE}"-->
+            <!--style="?android:attr/progressBarStyle"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/progressBar4"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintTop_toTopOf="parent"-->
+            <!--app:layout_constraintBottom_toBottomOf="parent"/>-->
 
 
-    <ImageView
-            android:onClick="@{() ->searchVm.retry()}"
-            android:visibility="@{searchVm.error ==null || searchVm.loader?View.GONE:View.VISIBLE}"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/rotate"
-            android:id="@+id/imageView5" app:layout_constraintStart_toStartOf="@+id/progressBar4"
-            app:layout_constraintEnd_toEndOf="@+id/progressBar4"
-            app:layout_constraintBottom_toTopOf="@+id/textView20"
-            app:layout_constraintTop_toTopOf="@+id/progressBar4"
-            app:layout_constraintVertical_bias="0.25"/>
+    <!--<ImageView-->
+            <!--android:onClick="@{() ->searchVm.retry()}"-->
+            <!--android:visibility="@{searchVm.error ==null || searchVm.loader?View.GONE:View.VISIBLE}"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:src="@drawable/rotate"-->
+            <!--android:id="@+id/imageView5" app:layout_constraintStart_toStartOf="@+id/progressBar4"-->
+            <!--app:layout_constraintEnd_toEndOf="@+id/progressBar4"-->
+            <!--app:layout_constraintBottom_toTopOf="@+id/textView20"-->
+            <!--app:layout_constraintTop_toTopOf="@+id/progressBar4"-->
+            <!--app:layout_constraintVertical_bias="0.25"/>-->
 
-    <TextView
-            tools:text="hhhvbbhbbhhv"
-            android:text="@{searchVm.error}"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView20" app:layout_constraintEnd_toEndOf="@+id/imageView5"
-            app:layout_constraintStart_toStartOf="@+id/imageView5" android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/progressBar4" android:textColor="@color/white"/>
+    <!--<TextView-->
+            <!--tools:text="hhhvbbhbbhhv"-->
+            <!--android:text="@{searchVm.error}"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/textView20" app:layout_constraintEnd_toEndOf="@+id/imageView5"-->
+            <!--app:layout_constraintStart_toStartOf="@+id/imageView5" android:layout_marginTop="16dp"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/progressBar4" android:textColor="@color/white"/>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

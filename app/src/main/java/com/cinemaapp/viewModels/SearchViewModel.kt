@@ -18,6 +18,7 @@ import com.cinemaapp.data.models.response.SearchResultResponse
 import com.cinemaapp.utils.network.Request
 import com.cinemaapp.utils.network.RequestListener
 import com.cinemaapp.viewModels.base.BaseViewModel
+import com.mabrouk.loaderlib.RetryCallBack
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -34,7 +35,12 @@ class SearchViewModel<v : SearchCallBack>(application: Application,val api: Base
     lateinit var query:String
     var isMore:Boolean=false
     var keyWordPage:Int=1
-
+    val callBack:RetryCallBack by lazy { object : RetryCallBack{
+        override fun onRetry() {
+            retry()
+        }
+    }
+    }
     fun reqSearch(query:String){
         this.query=query
       isMore=false
