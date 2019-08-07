@@ -31,6 +31,7 @@ import com.cinemaapp.utils.executors.AppExecutors
 import com.cinemaapp.utils.network.Request
 import com.cinemaapp.utils.network.RequestListener
 import com.cinemaapp.viewModels.base.BaseViewModel
+import com.mabrouk.loaderlib.RetryCallBack
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.*
@@ -64,7 +65,10 @@ class MovieDetailsViewModel<v : MovieDetailsCallBack>(
     val mainLoader:ObservableBoolean = ObservableBoolean()
     val mainError:ObservableField<String> = ObservableField()
     val movieObser:ObservableField<Movie> = ObservableField()
-
+    val castCallBack:RetryCallBack by lazy { object : RetryCallBack{ override fun onRetry() { reqCast() } } }
+    val trailerCallBack:RetryCallBack by lazy { object : RetryCallBack{ override fun onRetry() { reqTrailer() } } }
+    val recommendCallBack:RetryCallBack by lazy { object : RetryCallBack{ override fun onRetry() { reqMovie(MovieRelatedType.recommendations) } } }
+    val similarCallBack:RetryCallBack by lazy { object : RetryCallBack{ override fun onRetry() { reqMovie(MovieRelatedType.similar)  } } }
 
     init {
         setUpLists()

@@ -416,116 +416,66 @@
                         </LinearLayout>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
-                <ProgressBar
-                        android:visibility="@{movieDetails.loaders.get(0)?View.VISIBLE:View.GONE}"
-                        style="?android:attr/progressBarStyle"
+
+                <com.mabrouk.loaderlib.LoaderView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        app:loaderColor="@color/white"
+                        app:loaderType="WanderingCubes"
+                        app:showLoader="@{movieDetails.loaders.get(0)}"
+                        app:showError="@{movieDetails.errors.get(0)!=null}"
+                        app:errorMsg="@{movieDetails.errors.get(0)}"
+                        app:callBack="@{movieDetails.trailerCallBack}"
                         android:id="@+id/progressBar4" app:layout_constraintStart_toStartOf="@+id/move_trailer_rcv"
                         app:layout_constraintEnd_toEndOf="@+id/move_trailer_rcv"
                         app:layout_constraintTop_toTopOf="@+id/move_trailer_rcv"
                         app:layout_constraintBottom_toBottomOf="@+id/move_trailer_rcv"/>
-                <ProgressBar
-                        android:visibility="@{movieDetails.loaders.get(1)?View.VISIBLE:View.GONE}"
-                        style="?android:attr/progressBarStyle"
+
+
+                <com.mabrouk.loaderlib.LoaderView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        app:loaderColor="@color/white"
+                        app:loaderType="WanderingCubes"
+                        app:showLoader="@{movieDetails.loaders.get(1)}"
+                        app:showError="@{movieDetails.errors.get(1)!=null}"
+                        app:errorMsg="@{movieDetails.errors.get(1)}"
+                        app:callBack="@{movieDetails.castCallBack}"
                         android:id="@+id/progressBar5" app:layout_constraintStart_toStartOf="@+id/cast_rcv"
                         app:layout_constraintEnd_toEndOf="@+id/cast_rcv"
                         app:layout_constraintBottom_toBottomOf="@+id/cast_rcv"
                         app:layout_constraintTop_toTopOf="@+id/cast_rcv"/>
-                <ProgressBar
-                        android:visibility="@{movieDetails.loaders.get(2)?View.VISIBLE:View.GONE}"
-                        style="?android:attr/progressBarStyle"
+
+
+                <com.mabrouk.loaderlib.LoaderView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        app:loaderColor="@color/white"
+                        app:loaderType="WanderingCubes"
+                        app:showLoader="@{movieDetails.loaders.get(2)}"
+                        app:showError="@{movieDetails.errors.get(2)!=null}"
+                        app:errorMsg="@{movieDetails.errors.get(2)}"
+                        app:callBack="@{movieDetails.recommendCallBack}"
                         android:id="@+id/progressBar6" app:layout_constraintStart_toStartOf="@+id/recommend_rcv"
                         app:layout_constraintEnd_toEndOf="@+id/recommend_rcv" android:layout_marginEnd="8dp"
                         android:layout_marginRight="8dp"
                         app:layout_constraintTop_toTopOf="@+id/recommend_rcv"
                         app:layout_constraintBottom_toBottomOf="@+id/recommend_rcv"/>
-                <ProgressBar
-                        android:visibility="@{movieDetails.loaders.get(3)?View.VISIBLE:View.GONE}"
-                        style="?android:attr/progressBarStyle"
+
+                <com.mabrouk.loaderlib.LoaderView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        app:loaderColor="@color/white"
+                        app:loaderType="WanderingCubes"
+                        app:showLoader="@{movieDetails.loaders.get(3)}"
+                        app:showError="@{movieDetails.errors.get(3)!=null}"
+                        app:errorMsg="@{movieDetails.errors.get(3)}"
+                        app:callBack="@{movieDetails.similarCallBack}"
                         android:id="@+id/progressBar7" app:layout_constraintStart_toStartOf="@+id/similar_rcv"
                         app:layout_constraintEnd_toEndOf="@+id/similar_rcv" android:layout_marginEnd="8dp"
                         android:layout_marginRight="8dp"
                         app:layout_constraintTop_toTopOf="@+id/similar_rcv"
                         app:layout_constraintBottom_toBottomOf="@+id/similar_rcv"/>
-                <TextView
-                        android:text="@{movieDetails.errors.get(0)}"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/textView20" app:layout_constraintEnd_toEndOf="@+id/imageView5"
-                        app:layout_constraintStart_toStartOf="@+id/imageView5" android:layout_marginTop="10dp"
-                        app:layout_constraintTop_toBottomOf="@+id/progressBar4" android:textColor="@color/white"/>
-                <ImageView
-                        android:visibility="@{movieDetails.errors.get(0)==null?View.GONE:View.VISIBLE}"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/rotate"
-                        android:id="@+id/imageView5" app:layout_constraintStart_toStartOf="@+id/progressBar4"
-                        app:layout_constraintEnd_toEndOf="@+id/progressBar4"
-                        app:layout_constraintBottom_toTopOf="@+id/textView20"
-                        app:layout_constraintTop_toTopOf="@+id/progressBar4"
-                        app:layout_constraintVertical_bias="0.25"/>
-                <ImageView
-                        android:visibility="@{movieDetails.errors.get(1)==null?View.GONE:View.VISIBLE}"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/rotate"
-                        android:id="@+id/imageView6"
-                        app:layout_constraintBottom_toBottomOf="@+id/progressBar5"
-                        app:layout_constraintEnd_toEndOf="@+id/progressBar5"
-                        app:layout_constraintStart_toStartOf="@+id/progressBar5"
-                        app:layout_constraintTop_toTopOf="@+id/progressBar5"/>
-                <TextView
-                        android:text="@{movieDetails.errors.get(1)}"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/textView21" app:layout_constraintEnd_toEndOf="@+id/imageView6"
-                        app:layout_constraintStart_toStartOf="@+id/imageView6"
-                        app:layout_constraintHorizontal_bias="0.535" android:layout_marginTop="16dp"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView6" android:textColor="@color/colorAccent"/>
-                <ImageView
-                        android:visibility="@{movieDetails.errors.get(2)==null?View.GONE:View.VISIBLE}"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/rotate"
-                        android:id="@+id/imageView7"
-                        app:layout_constraintBottom_toBottomOf="@+id/progressBar6"
-                        app:layout_constraintEnd_toEndOf="@+id/progressBar6"
-                        app:layout_constraintStart_toStartOf="@+id/progressBar6"
-                        app:layout_constraintTop_toTopOf="@+id/progressBar6"/>
-                <TextView
-                        android:text="@{movieDetails.errors.get(2)}"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/textView22" app:layout_constraintStart_toStartOf="@+id/imageView7"
-                        app:layout_constraintEnd_toEndOf="@+id/imageView7" app:layout_constraintHorizontal_bias="0.571"
-                        android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/imageView7"
-                        android:textColor="@color/colorAccent"/>
-                <ImageView
-                        android:visibility="@{movieDetails.errors.get(3)==null?View.GONE:View.VISIBLE}"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/rotate"
-                        android:id="@+id/imageView8" app:layout_constraintEnd_toEndOf="@+id/progressBar7"
-                        app:layout_constraintStart_toStartOf="@+id/progressBar7"
-                        app:layout_constraintBottom_toBottomOf="@+id/progressBar7"
-                        app:layout_constraintTop_toTopOf="@+id/progressBar7"/>
-                <TextView
-                        android:text="@{movieDetails.errors.get(3)}"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/textView23" app:layout_constraintEnd_toEndOf="@+id/imageView8"
-                        app:layout_constraintStart_toStartOf="@+id/imageView8"
-                        app:layout_constraintHorizontal_bias="0.357" android:layout_marginTop="10dp"
-                        app:layout_constraintTop_toBottomOf="@+id/progressBar7" android:textColor="@color/colorAccent"/>
-
-
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
 

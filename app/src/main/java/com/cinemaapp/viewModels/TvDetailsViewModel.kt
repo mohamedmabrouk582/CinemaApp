@@ -30,6 +30,7 @@ import com.cinemaapp.data.models.response.TvShowResponse
 import com.cinemaapp.utils.network.Request
 import com.cinemaapp.utils.network.RequestListener
 import com.cinemaapp.viewModels.base.BaseViewModel
+import com.mabrouk.loaderlib.RetryCallBack
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.Dispatchers
@@ -52,6 +53,11 @@ class TvDetailsViewModel<v : TvDetailsCallBack>( application: Application,val ap
     val tvShowData:ObservableField<TvShow> = ObservableField()
     var isLoadMore:Boolean = false
     var tv_id: Long=0
+    val castCallBack: RetryCallBack by lazy { object : RetryCallBack { override fun onRetry() { reqTvCast() } } }
+    val trailerCallBack: RetryCallBack by lazy { object : RetryCallBack { override fun onRetry() { reqTvTrailer() } } }
+    val recommendCallBack: RetryCallBack by lazy { object : RetryCallBack { override fun onRetry() { reqTvShow(MovieRelatedType.recommendations) } } }
+    val similarCallBack: RetryCallBack by lazy { object : RetryCallBack { override fun onRetry() { reqTvShow(MovieRelatedType.similar)  } } }
+
     lateinit var tvShow:TvShow
 
     init {

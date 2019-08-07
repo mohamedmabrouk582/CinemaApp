@@ -734,44 +734,102 @@
                         </LinearLayout>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
-                <ProgressBar
-                        android:visibility="@{tvDetails.loaders.get(0)?View.VISIBLE:View.GONE}"
-                        style="?android:attr/progressBarStyle"
+
+                <com.mabrouk.loaderlib.LoaderView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        app:loaderColor="@color/white"
+                        app:loaderType="WanderingCubes"
+                        app:showLoader="@{tvDetails.loaders.get(0)}"
+                        app:showError="@{tvDetails.errors.get(0)!=null}"
+                        app:errorMsg="@{tvDetails.errors.get(0)}"
+                        app:callBack="@{tvDetails.trailerCallBack}"
                         android:id="@+id/progressBar4" app:layout_constraintStart_toStartOf="@+id/move_trailer_rcv"
                         app:layout_constraintEnd_toEndOf="@+id/move_trailer_rcv"
                         app:layout_constraintTop_toTopOf="@+id/move_trailer_rcv"
                         app:layout_constraintBottom_toBottomOf="@+id/move_trailer_rcv"/>
-                <ProgressBar
-                        android:visibility="@{tvDetails.loaders.get(1)?View.VISIBLE:View.GONE}"
-                        style="?android:attr/progressBarStyle"
+                <!--<ProgressBar-->
+                        <!--android:visibility="@{tvDetails.loaders.get(0)?View.VISIBLE:View.GONE}"-->
+                        <!--style="?android:attr/progressBarStyle"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:id="@+id/progressBar4" app:layout_constraintStart_toStartOf="@+id/move_trailer_rcv"-->
+                        <!--app:layout_constraintEnd_toEndOf="@+id/move_trailer_rcv"-->
+                        <!--app:layout_constraintTop_toTopOf="@+id/move_trailer_rcv"-->
+                        <!--app:layout_constraintBottom_toBottomOf="@+id/move_trailer_rcv"/>-->
+
+                <com.mabrouk.loaderlib.LoaderView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        app:loaderColor="@color/white"
+                        app:loaderType="WanderingCubes"
+                        app:showLoader="@{tvDetails.loaders.get(1)}"
+                        app:showError="@{tvDetails.errors.get(1)!=null}"
+                        app:errorMsg="@{tvDetails.errors.get(1)}"
+                        app:callBack="@{tvDetails.castCallBack}"
                         android:id="@+id/progressBar5" app:layout_constraintStart_toStartOf="@+id/cast_rcv"
                         app:layout_constraintEnd_toEndOf="@+id/cast_rcv"
                         app:layout_constraintBottom_toBottomOf="@+id/cast_rcv"
                         app:layout_constraintTop_toTopOf="@+id/cast_rcv"/>
-                <ProgressBar
-                        android:visibility="@{tvDetails.loaders.get(2)?View.VISIBLE:View.GONE}"
-                        style="?android:attr/progressBarStyle"
+                <!--<ProgressBar-->
+                        <!--android:visibility="@{tvDetails.loaders.get(1)?View.VISIBLE:View.GONE}"-->
+                        <!--style="?android:attr/progressBarStyle"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:id="@+id/progressBar5" app:layout_constraintStart_toStartOf="@+id/cast_rcv"-->
+                        <!--app:layout_constraintEnd_toEndOf="@+id/cast_rcv"-->
+                        <!--app:layout_constraintBottom_toBottomOf="@+id/cast_rcv"-->
+                        <!--app:layout_constraintTop_toTopOf="@+id/cast_rcv"/>-->
+                <com.mabrouk.loaderlib.LoaderView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        app:loaderColor="@color/white"
+                        app:loaderType="WanderingCubes"
+                        app:showLoader="@{tvDetails.loaders.get(2)}"
+                        app:showError="@{tvDetails.errors.get(2)!=null}"
+                        app:errorMsg="@{tvDetails.errors.get(2)}"
+                        app:callBack="@{tvDetails.recommendCallBack}"
                         android:id="@+id/progressBar6" app:layout_constraintStart_toStartOf="@+id/recommend_rcv"
                         app:layout_constraintEnd_toEndOf="@+id/recommend_rcv" android:layout_marginEnd="8dp"
                         android:layout_marginRight="8dp"
                         app:layout_constraintTop_toTopOf="@+id/recommend_rcv"
                         app:layout_constraintBottom_toBottomOf="@+id/recommend_rcv"/>
-                <ProgressBar
-                        android:visibility="@{tvDetails.loaders.get(3)?View.VISIBLE:View.GONE}"
-                        style="?android:attr/progressBarStyle"
+
+                <!--<ProgressBar-->
+                        <!--android:visibility="@{tvDetails.loaders.get(2)?View.VISIBLE:View.GONE}"-->
+                        <!--style="?android:attr/progressBarStyle"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:id="@+id/progressBar6" app:layout_constraintStart_toStartOf="@+id/recommend_rcv"-->
+                        <!--app:layout_constraintEnd_toEndOf="@+id/recommend_rcv" android:layout_marginEnd="8dp"-->
+                        <!--android:layout_marginRight="8dp"-->
+                        <!--app:layout_constraintTop_toTopOf="@+id/recommend_rcv"-->
+                        <!--app:layout_constraintBottom_toBottomOf="@+id/recommend_rcv"/>-->
+
+                <com.mabrouk.loaderlib.LoaderView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        app:loaderColor="@color/white"
+                        app:loaderType="WanderingCubes"
+                        app:showLoader="@{tvDetails.loaders.get(3)}"
+                        app:showError="@{tvDetails.errors.get(3)!=null}"
+                        app:errorMsg="@{tvDetails.errors.get(3)}"
+                        app:callBack="@{tvDetails.similarCallBack}"
                         android:id="@+id/progressBar7" app:layout_constraintStart_toStartOf="@+id/similar_rcv"
                         app:layout_constraintEnd_toEndOf="@+id/similar_rcv" android:layout_marginEnd="8dp"
                         android:layout_marginRight="8dp"
                         app:layout_constraintTop_toTopOf="@+id/similar_rcv"
                         app:layout_constraintBottom_toBottomOf="@+id/similar_rcv"/>
+                <!--<ProgressBar-->
+                        <!--android:visibility="@{tvDetails.loaders.get(3)?View.VISIBLE:View.GONE}"-->
+                        <!--style="?android:attr/progressBarStyle"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:id="@+id/progressBar7" app:layout_constraintStart_toStartOf="@+id/similar_rcv"-->
+                        <!--app:layout_constraintEnd_toEndOf="@+id/similar_rcv" android:layout_marginEnd="8dp"-->
+                        <!--android:layout_marginRight="8dp"-->
+                        <!--app:layout_constraintTop_toTopOf="@+id/similar_rcv"-->
+                        <!--app:layout_constraintBottom_toBottomOf="@+id/similar_rcv"/>-->
                 <TextView
                         android:text="@{tvDetails.errors.get(0)}"
                         android:layout_width="wrap_content"
