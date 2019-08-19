@@ -9,7 +9,12 @@
         <import type="android.view.View"/>
         <import type="com.cinemaapp.data.enums.MovieRelatedType"/>
     </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+android:background="@color/colorPrimary"
+android:layout_width="match_parent"
+            android:layout_height="match_parent">
     <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:visibility="@{tvDetails.mainLoader || tvDetails.mainError!=null?View.GONE:View.VISIBLE}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -830,84 +835,24 @@
                         <!--android:layout_marginRight="8dp"-->
                         <!--app:layout_constraintTop_toTopOf="@+id/similar_rcv"-->
                         <!--app:layout_constraintBottom_toBottomOf="@+id/similar_rcv"/>-->
-                <TextView
-                        android:text="@{tvDetails.errors.get(0)}"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/textView20" app:layout_constraintEnd_toEndOf="@+id/imageView5"
-                        app:layout_constraintStart_toStartOf="@+id/imageView5" android:layout_marginTop="10dp"
-                        app:layout_constraintTop_toBottomOf="@+id/progressBar4" android:textColor="@color/white"/>
-                <ImageView
-                        android:onClick="@{() ->tvDetails.reqTvTrailer()}"
-                        android:visibility="@{tvDetails.errors.get(0)==null?View.GONE:View.VISIBLE}"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/rotate"
-                        android:id="@+id/imageView5" app:layout_constraintStart_toStartOf="@+id/progressBar4"
-                        app:layout_constraintEnd_toEndOf="@+id/progressBar4"
-                        app:layout_constraintBottom_toTopOf="@+id/textView20"
-                        app:layout_constraintTop_toTopOf="@+id/progressBar4"
-                        app:layout_constraintVertical_bias="0.25"/>
-                <ImageView
-                        android:onClick="@{() ->tvDetails.reqTvCast()}"
-                        android:visibility="@{tvDetails.errors.get(1)==null?View.GONE:View.VISIBLE}"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/rotate"
-                        android:id="@+id/imageView6"
-                        app:layout_constraintBottom_toBottomOf="@+id/progressBar5"
-                        app:layout_constraintEnd_toEndOf="@+id/progressBar5"
-                        app:layout_constraintStart_toStartOf="@+id/progressBar5"
-                        app:layout_constraintTop_toTopOf="@+id/progressBar5"/>
-                <TextView
-                        android:text="@{tvDetails.errors.get(6)}"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/textView21" app:layout_constraintEnd_toEndOf="@+id/imageView6"
-                        app:layout_constraintStart_toStartOf="@+id/imageView6"
-                        app:layout_constraintHorizontal_bias="0.535" android:layout_marginTop="16dp"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView6" android:textColor="@color/colorAccent"/>
-                <ImageView
-                        android:onClick="@{() ->tvDetails.reqTvShow(MovieRelatedType.recommendations)}"
-                        android:visibility="@{tvDetails.errors.get(2)==null?View.GONE:View.VISIBLE}"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/rotate"
-                        android:id="@+id/imageView7"
-                        app:layout_constraintBottom_toBottomOf="@+id/progressBar6"
-                        app:layout_constraintEnd_toEndOf="@+id/progressBar6"
-                        app:layout_constraintStart_toStartOf="@+id/progressBar6"
-                        app:layout_constraintTop_toTopOf="@+id/progressBar6"/>
-                <TextView
-                        android:text="@{tvDetails.errors.get(7)}"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/textView22" app:layout_constraintStart_toStartOf="@+id/imageView7"
-                        app:layout_constraintEnd_toEndOf="@+id/imageView7" app:layout_constraintHorizontal_bias="0.571"
-                        android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/imageView7"
-                        android:textColor="@color/colorAccent"/>
-                <ImageView
-                        android:onClick="@{() ->tvDetails.reqTvShow(MovieRelatedType.similar)}"
-                        android:visibility="@{tvDetails.errors.get(3)==null?View.GONE:View.VISIBLE}"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/rotate"
-                        android:id="@+id/imageView8" app:layout_constraintEnd_toEndOf="@+id/progressBar7"
-                        app:layout_constraintStart_toStartOf="@+id/progressBar7"
-                        app:layout_constraintBottom_toBottomOf="@+id/progressBar7"
-                        app:layout_constraintTop_toTopOf="@+id/progressBar7"/>
-                <TextView
-                        android:text="@{tvDetails.errors.get(8)}"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/textView23" app:layout_constraintEnd_toEndOf="@+id/imageView8"
-                        app:layout_constraintStart_toStartOf="@+id/imageView8"
-                        app:layout_constraintHorizontal_bias="0.357" android:layout_marginTop="10dp"
-                        app:layout_constraintTop_toBottomOf="@+id/progressBar7" android:textColor="@color/colorAccent"/>
-
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <com.mabrouk.loaderlib.LoaderView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:loaderColor="@color/white"
+                app:loaderType="MultiplePulseRing"
+                app:showLoader="@{tvDetails.mainLoader}"
+                app:showError="@{tvDetails.mainError!=null}"
+                app:errorMsg="@{tvDetails.mainError}"
+                app:callBack="@{tvDetails.mainCallBack}"
+                android:id="@+id/progressBar0"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

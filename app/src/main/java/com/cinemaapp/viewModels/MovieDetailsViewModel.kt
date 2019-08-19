@@ -69,6 +69,7 @@ class MovieDetailsViewModel<v : MovieDetailsCallBack>(
     val trailerCallBack:RetryCallBack by lazy { object : RetryCallBack{ override fun onRetry() { reqTrailer() } } }
     val recommendCallBack:RetryCallBack by lazy { object : RetryCallBack{ override fun onRetry() { reqMovie(MovieRelatedType.recommendations) } } }
     val similarCallBack:RetryCallBack by lazy { object : RetryCallBack{ override fun onRetry() { reqMovie(MovieRelatedType.similar)  } } }
+    val mainCallBack: RetryCallBack by lazy { object : RetryCallBack { override fun onRetry() { reqMovieDetails(movieId)  } } }
 
     init {
         setUpLists()
@@ -128,6 +129,7 @@ class MovieDetailsViewModel<v : MovieDetailsCallBack>(
                 }
 
                 override fun onNetWorkError(msg: String) {
+                    mainLoader.set(false)
                     movieDao.getMovie(movieId).observe(view.getMovieDetailsFragment(), Observer {
                        movie=it
                        Log.d("fafafdfsdsd",movie.toString())

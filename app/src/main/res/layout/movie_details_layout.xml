@@ -8,7 +8,12 @@
         <import type="com.cinemaapp.utils.DataBindAdapterUtils"/>
         <import type="android.view.View"/>
     </data>
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                                                       android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    >
     <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:visibility="@{movieDetails.mainLoader || movieDetails.mainError!=null?View.GONE:View.VISIBLE}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -480,4 +485,18 @@
         </androidx.core.widget.NestedScrollView>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <com.mabrouk.loaderlib.LoaderView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:loaderColor="@color/white"
+            app:loaderType="WanderingCubes"
+            app:showLoader="@{movieDetails.mainLoader}"
+            app:showError="@{movieDetails.mainError!=null}"
+            app:errorMsg="@{movieDetails.mainError}"
+            app:callBack="@{movieDetails.mainCallBack}"
+            android:id="@+id/progressBar0" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

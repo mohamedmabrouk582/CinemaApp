@@ -5,6 +5,7 @@ import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.widget.Toast
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
@@ -57,6 +58,7 @@ class TvDetailsViewModel<v : TvDetailsCallBack>( application: Application,val ap
     val trailerCallBack: RetryCallBack by lazy { object : RetryCallBack { override fun onRetry() { reqTvTrailer() } } }
     val recommendCallBack: RetryCallBack by lazy { object : RetryCallBack { override fun onRetry() { reqTvShow(MovieRelatedType.recommendations) } } }
     val similarCallBack: RetryCallBack by lazy { object : RetryCallBack { override fun onRetry() { reqTvShow(MovieRelatedType.similar)  } } }
+    val mainCallBack: RetryCallBack by lazy { object : RetryCallBack { override fun onRetry() { reqTvShowDetails(tv_id)  } } }
 
     lateinit var tvShow:TvShow
 
@@ -174,15 +176,12 @@ class TvDetailsViewModel<v : TvDetailsCallBack>( application: Application,val ap
                 }
 
                 override fun onError(msg: String) {
-                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                 }
 
                 override fun onSessionExpired(msg: String) {
-                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                 }
 
                 override fun onNetWorkError(msg: String) {
-                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                 }
 
             }))

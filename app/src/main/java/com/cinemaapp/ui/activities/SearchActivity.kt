@@ -83,8 +83,10 @@ class SearchActivity : BaseActivity() , SearchCallBack, SearchAdapter.SearchList
 
             override fun onSuggestionClick(position: Int): Boolean {
                 GlobalScope.launch (Dispatchers.Main) {
-                    searchView.setQuery(suggestions[position], true)
-                    searchView.isFocusable = false
+                    try {
+                        searchView.setQuery(suggestions[position], true)
+                        searchView.isFocusable = false
+                    }catch (e:Exception){}
                 }
                 return true
             }

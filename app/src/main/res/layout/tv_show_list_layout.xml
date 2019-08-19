@@ -83,103 +83,158 @@
                     android:layout_marginRight="8dp" android:layout_marginBottom="16dp"
                     app:layout_constraintBottom_toBottomOf="parent" android:layout_marginTop="10dp"
                     android:id="@+id/top_rated_rcv"/>
-            <ProgressBar
-                    android:visibility="@{tvList.loaders.get(0)?View.VISIBLE:View.GONE}"
-                    style="?android:attr/progressBarStyle"
+
+            <com.mabrouk.loaderlib.LoaderView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:loaderColor="@color/white"
+                    app:loaderType="Wave"
+                    app:showLoader="@{tvList.loaders.get(0)}"
+                    app:showError="@{tvList.errors.get(0)!=null}"
+                    app:errorMsg="@{tvList.errors.get(0)}"
+                    app:enableRetry="false"
                     android:id="@+id/progressBar"
                     app:layout_constraintTop_toTopOf="@+id/airing_today_rcv"
                     app:layout_constraintStart_toStartOf="@+id/airing_today_rcv"
                     app:layout_constraintBottom_toBottomOf="@+id/airing_today_rcv"
-                    app:layout_constraintEnd_toEndOf="@+id/airing_today_rcv"
-                    android:indeterminate="true"
-            />
-            <TextView
-                    android:text="@{tvList.errors.get(0)}"
+                    app:layout_constraintEnd_toEndOf="@+id/airing_today_rcv"/>
+            <!--<ProgressBar-->
+                    <!--android:visibility="@{tvList.loaders.get(0)?View.VISIBLE:View.GONE}"-->
+                    <!--style="?android:attr/progressBarStyle"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:id="@+id/progressBar"-->
+                    <!--app:layout_constraintTop_toTopOf="@+id/airing_today_rcv"-->
+                    <!--app:layout_constraintStart_toStartOf="@+id/airing_today_rcv"-->
+                    <!--app:layout_constraintBottom_toBottomOf="@+id/airing_today_rcv"-->
+                    <!--app:layout_constraintEnd_toEndOf="@+id/airing_today_rcv"-->
+                    <!--android:indeterminate="true"-->
+            <!--/>-->
+            <!--<TextView-->
+                    <!--android:text="@{tvList.errors.get(0)}"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:id="@+id/textView5"-->
+                    <!--app:layout_constraintTop_toTopOf="@+id/progressBar"-->
+                    <!--app:layout_constraintStart_toStartOf="@+id/progressBar"-->
+                    <!--app:layout_constraintEnd_toEndOf="@+id/progressBar"-->
+                    <!--app:layout_constraintBottom_toBottomOf="@+id/progressBar" android:textSize="12sp"-->
+                    <!--app:fontFamily="@font/ringm" android:textColor="@color/colorPrimary"/>-->
+            <com.mabrouk.loaderlib.LoaderView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView5"
-                    app:layout_constraintTop_toTopOf="@+id/progressBar"
-                    app:layout_constraintStart_toStartOf="@+id/progressBar"
-                    app:layout_constraintEnd_toEndOf="@+id/progressBar"
-                    app:layout_constraintBottom_toBottomOf="@+id/progressBar" android:textSize="12sp"
-                    app:fontFamily="@font/ringm" android:textColor="@color/colorPrimary"/>
-
-
-            <ProgressBar
-                    android:visibility="@{tvList.loaders.get(1)?View.VISIBLE:View.GONE}"
-                    style="?android:attr/progressBarStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    app:loaderColor="@color/white"
+                    app:loaderType="PulseRing"
+                    app:showLoader="@{tvList.loaders.get(1)}"
+                    app:showError="@{tvList.errors.get(1)!=null}"
+                    app:errorMsg="@{tvList.errors.get(1)}"
+                    app:enableRetry="false"
                     android:id="@+id/progressBar1"
                     app:layout_constraintTop_toTopOf="@+id/on_the_air_rcv"
                     app:layout_constraintStart_toStartOf="@+id/on_the_air_rcv"
                     app:layout_constraintBottom_toBottomOf="@+id/on_the_air_rcv"
-                    app:layout_constraintEnd_toEndOf="@+id/on_the_air_rcv"
-                    android:indeterminate="true"
-            />
-            <TextView
-                    android:text="@{tvList.errors.get(1)}"
+                    app:layout_constraintEnd_toEndOf="@+id/on_the_air_rcv"/>
+
+            <!--<ProgressBar-->
+                    <!--android:visibility="@{tvList.loaders.get(1)?View.VISIBLE:View.GONE}"-->
+                    <!--style="?android:attr/progressBarStyle"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:id="@+id/progressBar1"-->
+                    <!--app:layout_constraintTop_toTopOf="@+id/on_the_air_rcv"-->
+                    <!--app:layout_constraintStart_toStartOf="@+id/on_the_air_rcv"-->
+                    <!--app:layout_constraintBottom_toBottomOf="@+id/on_the_air_rcv"-->
+                    <!--app:layout_constraintEnd_toEndOf="@+id/on_the_air_rcv"-->
+                    <!--android:indeterminate="true"-->
+            <!--/>-->
+            <!--<TextView-->
+                    <!--android:text="@{tvList.errors.get(1)}"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:id="@+id/textView6"-->
+                    <!--app:layout_constraintTop_toTopOf="@+id/progressBar1"-->
+                    <!--app:layout_constraintStart_toStartOf="@+id/progressBar1"-->
+                    <!--app:layout_constraintEnd_toEndOf="@+id/progressBar1"-->
+                    <!--app:layout_constraintBottom_toBottomOf="@+id/progressBar1" android:textSize="12sp"-->
+                    <!--app:fontFamily="@font/ringm" android:textColor="@color/colorPrimary"/>-->
+
+            <com.mabrouk.loaderlib.LoaderView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView6"
-                    app:layout_constraintTop_toTopOf="@+id/progressBar1"
-                    app:layout_constraintStart_toStartOf="@+id/progressBar1"
-                    app:layout_constraintEnd_toEndOf="@+id/progressBar1"
-                    app:layout_constraintBottom_toBottomOf="@+id/progressBar1" android:textSize="12sp"
-                    app:fontFamily="@font/ringm" android:textColor="@color/colorPrimary"/>
-
-
-            <ProgressBar
-                    android:visibility="@{tvList.loaders.get(2)?View.VISIBLE:View.GONE}"
-                    style="?android:attr/progressBarStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    app:loaderColor="@color/white"
+                    app:loaderType="PulseRing"
+                    app:showLoader="@{tvList.loaders.get(2)}"
+                    app:showError="@{tvList.errors.get(2)!=null}"
+                    app:errorMsg="@{tvList.errors.get(2)}"
+                    app:enableRetry="false"
                     android:id="@+id/progressBar2"
                     app:layout_constraintTop_toTopOf="@+id/popular_rcv"
                     app:layout_constraintStart_toStartOf="@+id/popular_rcv"
                     app:layout_constraintBottom_toBottomOf="@+id/popular_rcv"
-                    app:layout_constraintEnd_toEndOf="@+id/popular_rcv"
-                    android:indeterminate="true"
-            />
+                    app:layout_constraintEnd_toEndOf="@+id/popular_rcv"/>
 
-            <TextView
-                    android:text="@{tvList.errors.get(2)}"
+            <!--<ProgressBar-->
+                    <!--android:visibility="@{tvList.loaders.get(2)?View.VISIBLE:View.GONE}"-->
+                    <!--style="?android:attr/progressBarStyle"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:id="@+id/progressBar2"-->
+                    <!--app:layout_constraintTop_toTopOf="@+id/popular_rcv"-->
+                    <!--app:layout_constraintStart_toStartOf="@+id/popular_rcv"-->
+                    <!--app:layout_constraintBottom_toBottomOf="@+id/popular_rcv"-->
+                    <!--app:layout_constraintEnd_toEndOf="@+id/popular_rcv"-->
+                    <!--android:indeterminate="true"-->
+            <!--/>-->
+
+            <!--<TextView-->
+                    <!--android:text="@{tvList.errors.get(2)}"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:id="@+id/textView7"-->
+                    <!--app:layout_constraintTop_toTopOf="@+id/progressBar2"-->
+                    <!--app:layout_constraintStart_toStartOf="@+id/progressBar2"-->
+                    <!--app:layout_constraintEnd_toEndOf="@+id/progressBar2"-->
+                    <!--app:layout_constraintBottom_toBottomOf="@+id/progressBar2" android:textSize="12sp"-->
+                    <!--app:fontFamily="@font/ringm" android:textColor="@color/colorPrimary"/>-->
+
+            <com.mabrouk.loaderlib.LoaderView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView7"
-                    app:layout_constraintTop_toTopOf="@+id/progressBar2"
-                    app:layout_constraintStart_toStartOf="@+id/progressBar2"
-                    app:layout_constraintEnd_toEndOf="@+id/progressBar2"
-                    app:layout_constraintBottom_toBottomOf="@+id/progressBar2" android:textSize="12sp"
-                    app:fontFamily="@font/ringm" android:textColor="@color/colorPrimary"/>
-
-
-
-            <ProgressBar
-                    android:visibility="@{tvList.loaders.get(3)?View.VISIBLE:View.GONE}"
-                    style="?android:attr/progressBarStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    app:loaderColor="@color/white"
+                    app:loaderType="PulseRing"
+                    app:showLoader="@{tvList.loaders.get(3)}"
+                    app:showError="@{tvList.errors.get(3)!=null}"
+                    app:errorMsg="@{tvList.errors.get(3)}"
+                    app:enableRetry="false"
                     android:id="@+id/progressBar3"
                     app:layout_constraintTop_toTopOf="@+id/top_rated_rcv"
                     app:layout_constraintStart_toStartOf="@+id/top_rated_rcv"
                     app:layout_constraintBottom_toBottomOf="@+id/top_rated_rcv"
-                    app:layout_constraintEnd_toEndOf="@+id/top_rated_rcv"
-                    android:indeterminate="true"
-            />
+                    app:layout_constraintEnd_toEndOf="@+id/top_rated_rcv"/>
 
-            <TextView
-                    android:text="@{tvList.errors.get(3)}"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textView8"
-                    app:layout_constraintTop_toTopOf="@+id/progressBar3"
-                    app:layout_constraintStart_toStartOf="@+id/progressBar3"
-                    app:layout_constraintEnd_toEndOf="@+id/progressBar3"
-                    app:layout_constraintBottom_toBottomOf="@+id/progressBar3" android:textSize="12sp"
-                    app:fontFamily="@font/ringm" android:textColor="@color/colorPrimary"/>
+            <!--<ProgressBar-->
+                    <!--android:visibility="@{tvList.loaders.get(3)?View.VISIBLE:View.GONE}"-->
+                    <!--style="?android:attr/progressBarStyle"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:id="@+id/progressBar3"-->
+                    <!--app:layout_constraintTop_toTopOf="@+id/top_rated_rcv"-->
+                    <!--app:layout_constraintStart_toStartOf="@+id/top_rated_rcv"-->
+                    <!--app:layout_constraintBottom_toBottomOf="@+id/top_rated_rcv"-->
+                    <!--app:layout_constraintEnd_toEndOf="@+id/top_rated_rcv"-->
+                    <!--android:indeterminate="true"-->
+            <!--/>-->
+
+            <!--<TextView-->
+                    <!--android:text="@{tvList.errors.get(3)}"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:id="@+id/textView8"-->
+                    <!--app:layout_constraintTop_toTopOf="@+id/progressBar3"-->
+                    <!--app:layout_constraintStart_toStartOf="@+id/progressBar3"-->
+                    <!--app:layout_constraintEnd_toEndOf="@+id/progressBar3"-->
+                    <!--app:layout_constraintBottom_toBottomOf="@+id/progressBar3" android:textSize="12sp"-->
+                    <!--app:fontFamily="@font/ringm" android:textColor="@color/colorPrimary"/>-->
 
 
 
